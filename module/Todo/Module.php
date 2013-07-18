@@ -1,6 +1,5 @@
 <?php
-
-namespace HelloWorld;
+namespace Todo;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
@@ -26,40 +25,17 @@ class Module
 
     public function getConfig()
     {
-		return array(
-			'router' => array(
-				'routes' => array(
-					'home' => array(
-						'type' => 'Zend\Mvc\Router\Http\Literal',
-						'options' => array(
-							'route'    => '/',
-							'defaults' => array(
-								'controller' => 'HelloWorld\Controller\Index',
-								'action'     => 'index',
-							),
-						),
-					),
-				),
-			),
-			'controllers' => array(
-				'invokables' => array(
-					'HelloWorld\Controller\Index' => 'HelloWorld\Controller\IndexController'
-				),
-			),
-			'view_manager' => array(
-				'template_path_stack' => array(
-					__DIR__ . '/view',
-				),
-			),
-		);
+	return include __DIR__ . '/config/module.config.php';
     }
-
-    public function getAutoloaderConfig()
-    {
+    
+    public function getAutoloaderConfig() {
         return array(
+            'Zend\Loader\ClassMapAutoloader' => array(
+                __DIR__ . '/autoload_classmap.php',
+            ),
             'Zend\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
-                    __NAMESPACE__ => __DIR__ . '/src/',
+                    __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
                 ),
             ),
         );
