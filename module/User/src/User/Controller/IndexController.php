@@ -1,11 +1,12 @@
 <?php
 
-namespace Todo\Controller;
+namespace User\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController,
     Zend\View\Model\ViewModel,
     Doctrine\ORM\EntityManager,
-    Todo\Entity\Event;
+    User\Entity\User,
+    User\Form\LoginForm;
 
 class IndexController extends AbstractActionController {
 
@@ -28,8 +29,14 @@ class IndexController extends AbstractActionController {
     }
          
     public function indexAction() { 
-        return new ViewModel(array(
-            'events' => $this->getEntityManager()->getRepository('Todo\Entity\Event')->findAll() 
+        
+    }
+    
+    public function loginAction() {
+       $form="1212";
+        
+       return new ViewModel(array(
+            'form' => $form,
         ));
     }
 

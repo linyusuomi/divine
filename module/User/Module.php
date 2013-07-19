@@ -1,10 +1,14 @@
 <?php
-namespace Todo;
+namespace User;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
+use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
+use Zend\Authentication\Storage;
+use Zend\Authentication\AuthenticationService;
+use Zend\Authentication\Adapter\DbTable as DbTableAuthAdapter;
 
-class Module
+class Module implements AutoloaderProviderInterface
 {
     public function onBootstrap(MvcEvent $e)
     {
@@ -40,4 +44,5 @@ class Module
             ),
         );
     }
+ 
 }

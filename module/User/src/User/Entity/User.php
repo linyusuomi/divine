@@ -1,5 +1,5 @@
 <?php
-namespace Todo\Entity;
+namespace User\Entity;
 
 use Doctrine\ORM\Mapping as ORM,
     Zend\InputFilter\InputFilter,
@@ -8,19 +8,18 @@ use Doctrine\ORM\Mapping as ORM,
     Zend\InputFilter\InputFilterInterface;
 
 /**
- * A todo list.
+ * 
  *
  * @ORM\Entity
- * @ORM\Table(name="event")
+ * @ORM\Table(name="user")
  * @property int $id
- * @property string $eventName
- * @property datetime $start
- * @property datetime $end
+ * @property string $username
+ * @property string $password
  */
 
-class Event implements InputFilterAwareInterface {
+class User implements InputFilterAwareInterface {
 
-   protected $inputFilter;
+    protected $inputFilter;
  
     /**
      * @ORM\Id
@@ -32,17 +31,12 @@ class Event implements InputFilterAwareInterface {
     /**
      * @ORM\Column(type="string")
      */
-    protected $eventName;
+    protected $username;
  
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="string")
      */
-    protected $start;
-    
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    protected $end;
+    protected $password;
  
     /**
      * Magic getter to expose protected properties.
@@ -83,10 +77,9 @@ class Event implements InputFilterAwareInterface {
      */
     public function populate($data = array()) 
     {
-        $this->id           = $data['id'];
-        $this->eventName    = $data['eventName'];
-        $this->start        = $data['start'];
-        $this->end          = $data['end'];
+        $this->id          = $data['id'];
+        $this->username    = $data['username'];
+        $this->password    = $data['password'];
     }
  
     public function setInputFilter(InputFilterInterface $inputFilter)
@@ -110,41 +103,19 @@ class Event implements InputFilterAwareInterface {
             )));
             
             $inputFilter->add($factory->createInput(array(
-                'name'       => 'event name',
+                'name'       => 'username',
                 'required'   => true,
                 'filters' => array(
                     array('name' => 'string'),
                 ),
             )));
- 
+            
             $inputFilter->add($factory->createInput(array(
-                'name'     => 'start',
-                'required' => true,
-                'filters'  => array(
-                    array('name' => 'StripTags'),
-                    array('name' => 'StringTrim'),
+                'name'       => 'password',
+                'required'   => true,
+                'filters' => array(
+                    array('name' => 'string'),
                 ),
-                
-            )));
- 
-            $inputFilter->add($factory->createInput(array(
-                'name'     => 'end',
-                'required' => true,
-                'filters'  => array(
-                    array('name' => 'StripTags'),
-                    array('name' => 'StringTrim'),
-                ),
-                /*
-                'validators' => array(
-                    array(
-                        'name'    => 'DateRange',
-                        'options' => array(
-                            'encoding' => 'UTF-8',
-                            'min'      => '2012-01-01',
-                            'max'      => '2020-01-01',
-                        ),
-                    ),
-                ),*/
             )));
  
             $this->inputFilter = $inputFilter;        

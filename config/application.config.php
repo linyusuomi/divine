@@ -2,7 +2,8 @@
 
 return array(
     'modules' => array(
-        'Todo',
+        'User',
+        'Course',
         'DoctrineModule',
         'DoctrineORMModule'
     ),

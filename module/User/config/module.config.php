@@ -1,39 +1,28 @@
 <?php
-namespace Todo;
+namespace User;
+
 return array(
     
     //Controllers in this module
     'controllers' => array(
         'invokables' => array(
-            'Todo\Controller\Index' => 'Todo\Controller\IndexController'
+            'User\Controller\Index' => 'User\Controller\IndexController'
         ),
     ),
     
     //Routes for this module
-    'router' => array(
-        
-        'routes' => array(
-            //in the future ,set a default module put this home route,it is not good in todo module
-            'home' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
-                    'route'    => '/',
-                    'defaults' => array(
-                        'controller' => 'Todo\Controller\Index',
-                        'action' => 'index',
-                    ),
-                ),
-            ),
-            'todo' => array(
+    'router' => array(     
+        'routes' => array(           
+            'user' => array(
                 'type' => 'segment',
                 'options' => array(
-                    'route' => '/todo[/:action][/:id]',
+                    'route' => '/user[/:action][/:id]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id' => '[0-9]+',
                     ),
                     'defaults' => array(
-                        'controller' => 'Todo\Controller\Index',
+                        'controller' => 'User\Controller\Index',
                         'action' => 'index',
                     ),
                 ),
@@ -44,7 +33,7 @@ return array(
     // View setup for this module
     'view_manager' => array(
         'template_path_stack' => array(
-            'todo' => __DIR__ . '/../view',
+            'user' => __DIR__ . '/../view',
         ),
     ),
     
