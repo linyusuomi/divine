@@ -62,5 +62,10 @@ return array(
                 )
             )
         )
-    )
+    ),
+    
+    //when run ./vendor/bin/doctrine-module orm:validate-schema got 'Given route does not implement Console route interface' error
+    'console' => array(
+        'router' => array(),
+    ),
 );
