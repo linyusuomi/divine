@@ -1,3 +1,19 @@
 <?php
+// module/User/view/user/index/login.phtml:
 
-echo $form;
+$title = 'Add new user';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('user', array('action' => 'authenticate')));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('id'));
+echo $this->formRow($form->get('username'));
+echo $this->formRow($form->get('password'));
+echo $this->formRow($form->get('rememberMe'));
+echo $this->formSubmit($form->get('submit'));
+echo $this->form()->closeTag();

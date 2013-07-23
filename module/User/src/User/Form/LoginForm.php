@@ -34,10 +34,10 @@ class LoginForm extends Form {
                 'label' => 'password',
             ),
         ));
-        $this->add(array(
-            'name' => 'remeberMe',
+        $this->add(array(            
+            'name' => 'rememberMe',
             'attributes' => array(
-                'type' => 'checkbox',
+                'type' => 'Checkbox',
             ),
             'options' => array(
                 'label' => 'Remember Me ?',
@@ -47,7 +47,7 @@ class LoginForm extends Form {
             'name' => 'submit',
             'attributes' => array(
                 'type' => 'submit',
-                'value' => 'Go',
+                'value' => 'submit',
                 'id' => 'submitbutton',
             ),
         ));
