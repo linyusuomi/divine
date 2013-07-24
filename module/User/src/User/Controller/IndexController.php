@@ -5,7 +5,8 @@ namespace User\Controller;
 use Zend\Mvc\Controller\AbstractActionController,
     Zend\View\Model\ViewModel,
     Doctrine\ORM\EntityManager,
-    User\Form\LoginForm;
+    User\Form\LoginForm,
+    User\Form\RegisterForm;
 
 class IndexController extends AbstractActionController {
 
@@ -83,7 +84,9 @@ class IndexController extends AbstractActionController {
                         $this->getAuthService()->setStorage($this->getSessionStorage());
                     }
                     $this->getAuthService()->getStorage()->write($request->getPost('username'));
-                          
+                    return $this->redirect()->toRoute('user', array( 
+                        'action' =>  'success' 
+                    ));     
                 }
             }
         } 
@@ -99,7 +102,24 @@ class IndexController extends AbstractActionController {
         $this->getSessionStorage()->forgetMe();
         $this->getAuthService()->clearIdentity();
         $this->flashmessenger()->addMessage("You've been logged out");
-        return $this->redirect()->toRoute('login');
+        return $this->redirect()->toRoute('user', array( 
+                        'action' =>  'login' 
+                    ));
+    }
+    
+    public function registerAction(){
+        $form = new RegisterForm();
+
+        return new ViewModel(array(
+                    'form' => $form,
+                    'messages' => $this->flashmessenger()->getMessages()
+                ));
+    }
+    
+    public function successAction(){    
+        return new ViewModel(array(
+                    
+                ));
     }
 
 }

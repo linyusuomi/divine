@@ -2,12 +2,11 @@
 
 namespace User;
 
-use Zend\Mvc\ModuleRouteListener;
-use Zend\Mvc\MvcEvent;
-use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
-use Zend\Authentication\Storage;
-use Zend\Authentication\AuthenticationService;
-use Zend\Authentication\Adapter\DbTable as DbTableAuthAdapter;
+use Zend\Mvc\ModuleRouteListener,
+    Zend\Mvc\MvcEvent,
+    Zend\ModuleManager\Feature\AutoloaderProviderInterface,
+    Zend\Authentication\AuthenticationService,
+    Zend\Authentication\Adapter\DbTable as DbTableAuthAdapter;
 
 class Module implements AutoloaderProviderInterface {
 
@@ -27,10 +26,6 @@ class Module implements AutoloaderProviderInterface {
         );
     }
 
-    public function getConfig() {
-        return include __DIR__ . '/config/module.config.php';
-    }
-
     public function getAutoloaderConfig() {
         return array(
             'Zend\Loader\ClassMapAutoloader' => array(
@@ -44,11 +39,15 @@ class Module implements AutoloaderProviderInterface {
         );
     }
 
+    public function getConfig() {
+        return include __DIR__ . '/config/module.config.php';
+    }
+
     public function getServiceConfig() {
         return array(
             'factories' => array(
-                'User\Model\AuthStorage' => function($sm){
-                 return new \User\Model\AuthStorage('zf_tutorial');  
+                'User\Model\AuthStorage' => function($sm) {
+                    return new \User\Model\AuthStorage('auth');
                 },
                 'AuthService' => function($sm) {
                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
@@ -61,5 +60,4 @@ class Module implements AutoloaderProviderInterface {
             ),
         );
     }
-
 }
