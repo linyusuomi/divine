@@ -1,4 +1,3 @@
-
 <?php
 // module/User/view/user/index/login.phtml:
 
@@ -8,7 +7,7 @@ $this->headTitle($title);
 <h1><?php echo $this->escapeHtml($title); ?></h1>
 <?php
 $form = $this->form;
-$form->setAttribute('action', $this->url('user', array('action' => 'authenticate')));
+$form->setAttribute('action', $this->url('register', array('action' => 'register')));
 $form->prepare();
 
 echo $this->form()->openTag($form);
@@ -16,5 +15,6 @@ echo $this->formHidden($form->get('id'));
 echo $this->formRow($form->get('username'));
 echo $this->formRow($form->get('password'));
 echo $this->formRow($form->get('email'));
+echo $this->formHidden($form->get('status'));
 echo $this->formSubmit($form->get('submit'));
 echo $this->form()->closeTag();

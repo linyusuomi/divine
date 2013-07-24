@@ -44,6 +44,12 @@ class RegisterForm extends Form {
             ),
         ));
         $this->add(array(
+            'name' => 'status',
+            'attributes' => array(
+                'type' => 'Checkbox',
+            ),
+        ));
+        $this->add(array(
             'name' => 'submit',
             'attributes' => array(
                 'type' => 'submit',

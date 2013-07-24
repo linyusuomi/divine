@@ -6,7 +6,8 @@ return array(
     //Controllers in this module
     'controllers' => array(
         'invokables' => array(
-            'User\Controller\Index' => 'User\Controller\IndexController'
+            'User\Controller\Index' => 'User\Controller\IndexController',
+            'User\Controller\Register' => 'User\Controller\RegisterController'
         ),
     ),
     
@@ -24,6 +25,20 @@ return array(
                     'defaults' => array(
                         'controller' => 'User\Controller\Index',
                         'action' => 'index',
+                    ),
+                ),
+            ),
+            'register' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/register[/:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'User\Controller\Register',
+                        'action' => 'register',
                     ),
                 ),
             ),
