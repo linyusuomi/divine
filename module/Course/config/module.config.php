@@ -13,17 +13,6 @@ return array(
     'router' => array(
         
         'routes' => array(
-            //in the future ,set a default module put this home route,it is not good in course module
-            'home' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
-                    'route'    => '/',
-                    'defaults' => array(
-                        'controller' => 'Course\Controller\Index',
-                        'action' => 'index',
-                    ),
-                ),
-            ),
             'course' => array(
                 'type' => 'segment',
                 'options' => array(

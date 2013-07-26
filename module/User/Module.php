@@ -2,29 +2,10 @@
 
 namespace User;
 
-use Zend\Mvc\ModuleRouteListener,
-    Zend\Mvc\MvcEvent,
-    Zend\ModuleManager\Feature\AutoloaderProviderInterface,
-    Zend\Authentication\AuthenticationService,
+use Zend\Authentication\AuthenticationService,
     Zend\Authentication\Adapter\DbTable as DbTableAuthAdapter;
 
-class Module implements AutoloaderProviderInterface {
-
-    public function onBootstrap(MvcEvent $e) {
-        $eventManager = $e->getApplication()->getEventManager();
-        $moduleRouteListener = new ModuleRouteListener();
-        $moduleRouteListener->attach($eventManager);
-
-        $sharedEvents = $e->getApplication()->getEventManager()->getSharedManager();
-        $sharedEvents->attach(
-                __NAMESPACE__, 'dispatch', function($e) {
-                    $result = $e->getResult();
-                    if ($result instanceof \Zend\View\Model\ViewModel) {
-                        $result->setTerminal(true);
-                    }
-                }
-        );
-    }
+class Module {
 
     public function getAutoloaderConfig() {
         return array(

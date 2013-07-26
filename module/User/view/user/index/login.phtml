@@ -1,11 +1,5 @@
 <?php
-// module/User/view/user/index/login.phtml:
 
-$title = 'Add new user';
-$this->headTitle($title);
-?>
-<h1><?php echo $this->escapeHtml($title); ?></h1>
-<?php
 $form = $this->form;
 $form->setAttribute('action', $this->url('user', array('action' => 'authenticate')));
 $form->prepare();

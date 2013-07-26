@@ -6,7 +6,8 @@ use Zend\Mvc\Controller\AbstractActionController,
     Zend\View\Model\ViewModel,
     User\Form\RegisterForm,
     Doctrine\ORM\EntityManager,
-    User\Entity\User;
+    User\Entity\User,
+    Zend\Mail;
 
 class RegisterController extends AbstractActionController {
     
@@ -40,9 +41,20 @@ class RegisterController extends AbstractActionController {
             $form->setData($request->getPost());
             if ($form->isValid()) {
                 $user->populate($form->getData());
-                $user->setStatus(1);
+                //$user->setStatus(1);
                 $this->getEntityManager()->persist($user);
                 $this->getEntityManager()->flush();
+                  
+                $password = $user->getPassword();
+                $password = md5($password);
+                //send mail to register 
+                $mail = new Mail\Message();
+                $mail->setBody("<a href='http://calendar.local.fi/register/verify?password=$password'>active ur account</a>");
+                $mail->setFrom('somebody@example.com', 'Some Sender');
+                $mail->addTo('linyusos@gmail.com', 'Some Recipient');
+                $mail->setSubject('TestSubject');
+                $transport = new Mail\Transport\Sendmail('-freturn_to_me@example.com');
+                $transport->send($mail);             
             }
         }
         
@@ -51,6 +63,15 @@ class RegisterController extends AbstractActionController {
                     'form' => $form,
                     'messages' => $this->flashmessenger()->getMessages()
                 ));
+    }
+    
+    public function verifyAction(){
+        
+        
+        return new ViewModel(array(
+                    
+                ));
+        
     }
 
 }
