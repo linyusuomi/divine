@@ -1,13 +1,30 @@
-<?php
+<div class="login-form">
+    <h2>Login</h2>
+    <?php
+    $form = $this->form;
+    $form->setAttribute('action', $this->url('user', array('action' => 'authenticate')));
+    $form->prepare();
+    echo $this->form()->openTag($form);
+    echo $this->formHidden($form->get('id'));
+    ?>
 
-$form = $this->form;
-$form->setAttribute('action', $this->url('user', array('action' => 'authenticate')));
-$form->prepare();
-
-echo $this->form()->openTag($form);
-echo $this->formHidden($form->get('id'));
-echo $this->formRow($form->get('username'));
-echo $this->formRow($form->get('password'));
-echo $this->formRow($form->get('rememberMe'));
-echo $this->formSubmit($form->get('submit'));
-echo $this->form()->closeTag();
+    <div class="clearfix">
+        <div class="input-prepend">
+            <span class="add-on"><i class="icon-user"></i></span>
+            <?php echo $this->formRow($form->get('username')); ?>
+        </div>
+    </div>
+    <div class="clearfix">
+        <div class="input-prepend">
+            <span class="add-on"><i class="icon-lock"></i></span>
+            <?php echo $this->formRow($form->get('password')); ?>
+        </div>
+    </div>
+    <div class="form-inline">
+        <label class="checkbox">
+            <?php echo $this->formRow($form->get('rememberMe')); ?>Remember me
+        </label>
+        <?php echo $this->formSubmit($form->get('submit')); ?>
+    </div>
+    <?php echo $this->form()->closeTag(); ?>
+</div>

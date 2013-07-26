@@ -12,7 +12,7 @@
         echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon.ico'))
                 ->prependStylesheet($this->basePath() . '/css/bootstrap-responsive.min.css')
                 ->prependStylesheet($this->basePath() . '/css/style.css')
-                ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css')
+                ->prependStylesheet($this->basePath() . '/css/bootstrap.css')
         ?>
 
         <!-- Scripts -->
@@ -22,7 +22,7 @@
                 ->prependFile($this->basePath() . '/js/jquery.min.js')
                 ->appendFile($this->basePath() . '/js/custom.js')
         ?>
-
+        
     </head>
     <body>
         <div class="navbar navbar-inverse navbar-fixed-top">
@@ -43,12 +43,12 @@
             </div>
         </div>
         <div class="container">
-<?php echo $this->content; ?>
+            <?php echo $this->content; ?>
             <hr>
             <footer>
                 <p>&copy; 2005 - 9999 by yu lin. <?php echo $this->translate('All rights reserved.') ?></p>
             </footer>
         </div> <!-- /container -->
-<?php echo $this->inlineScript() ?>
+        <?php echo $this->inlineScript() ?>
     </body>
 </html>

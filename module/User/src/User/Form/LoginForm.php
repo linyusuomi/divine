@@ -20,27 +20,20 @@ class LoginForm extends Form {
             'name' => 'username',
             'attributes' => array(
                 'type' => 'text',
-            ),
-            'options' => array(
-                'label' => 'username',
+                'placeholder'=>'Username',
             ),
         ));
         $this->add(array(
             'name' => 'password',
             'attributes' => array(
                 'type' => 'text',
-            ),
-            'options' => array(
-                'label' => 'password',
+                'placeholder'=>'Password',
             ),
         ));
         $this->add(array(            
             'name' => 'rememberMe',
             'attributes' => array(
                 'type' => 'Checkbox',
-            ),
-            'options' => array(
-                'label' => 'Remember Me ?',
             ),
         ));
         $this->add(array(
@@ -49,6 +42,7 @@ class LoginForm extends Form {
                 'type' => 'submit',
                 'value' => 'submit',
                 'id' => 'submitbutton',
+                'class' => 'btn primary',
             ),
         ));
     }
