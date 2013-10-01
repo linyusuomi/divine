@@ -1,5 +1,5 @@
 <?php
-namespace Course;
+namespace Blog;
 return array(
     
     //Controllers in this module
@@ -10,8 +10,7 @@ return array(
     ),
     
     //Routes for this module
-    'router' => array(
-        
+    'router' => array(       
         'routes' => array(
             'blog' => array(
                 'type' => 'segment',
@@ -37,21 +36,7 @@ return array(
         ),
     ),
     
-    // Doctrine config
-    'doctrine' => array(
-        'driver' => array(
-            __NAMESPACE__ . '_driver' => array(
-                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
-                'cache' => 'array',
-                'paths' => array(__DIR__ . '/../src/' . __NAMESPACE__ . '/Entity')
-            ),
-            'orm_default' => array(
-                'drivers' => array(
-                    __NAMESPACE__ . '\Entity' => __NAMESPACE__ . '_driver'
-                )
-            )
-        )
-    ),
+   
     
     //when run ./vendor/bin/doctrine-module orm:validate-schema got 'Given route does not implement Console route interface' error
     'console' => array(

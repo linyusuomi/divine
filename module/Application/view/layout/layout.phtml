@@ -14,10 +14,10 @@
         <!-- CSS Theme -->
         <?php
         echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon.ico'))
+                 ->prependStylesheet($this->basePath() . '/plugins/bootstrap/css/bootstrap-responsive.min.css')
                 ->prependStylesheet($this->basePath() . '/css/headers/header1.css')
                 ->prependStylesheet($this->basePath() . '/plugins/bootstrap/css/bootstrap.min.css')
-                ->prependStylesheet($this->basePath() . '/css/style.css')            
-                ->prependStylesheet($this->basePath() . '/plugins/bootstrap/css/bootstrap-responsive.min.css')
+                ->prependStylesheet($this->basePath() . '/css/style.css')                         
                 ->prependStylesheet($this->basePath() . '/css/style_responsive.css')
                 ->prependStylesheet($this->basePath() . '/plugins/font-awesome/css/font-awesome.css')
                 ->prependStylesheet($this->basePath() . '/css/themes/default.css')
