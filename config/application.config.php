@@ -2,9 +2,11 @@
 
 return array(
     'modules' => array(
+        'ZendDeveloperTools',
         'Application',
         'User',
         'Course',
+        'Blog',
         'DoctrineModule',
         'DoctrineORMModule'
     ),

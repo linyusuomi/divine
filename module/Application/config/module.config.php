@@ -15,8 +15,8 @@ return array(
                 'options' => array(
                     'route'    => '/',
                     'defaults' => array(
-                        'controller' => 'User\Controller\Index',
-                        'action'     => 'login',
+                        'controller' => 'Blog\Controller\Index',
+                        'action'     => 'index',
                     ),
                 ),
             ),

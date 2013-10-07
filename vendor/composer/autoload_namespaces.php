@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'Zend\\' => array($vendorDir . '/zendframework/zendframework/library'),
     'ZendTest\\' => array($vendorDir . '/zendframework/zendframework/tests'),
+    'ZendDeveloperTools' => array($vendorDir . '/zendframework/zend-developer-tools/src'),
     'Symfony\\Component\\Console\\' => array($vendorDir . '/symfony/console'),
     'Doctrine\\ORM' => array($vendorDir . '/doctrine/orm/lib'),
     'Doctrine\\DBAL' => array($vendorDir . '/doctrine/dbal/lib'),
